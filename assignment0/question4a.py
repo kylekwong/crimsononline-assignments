@@ -21,16 +21,15 @@ def look_away(num):
 		# or if mario, wario, and peach lose.
 		while lives > 0:
 
-			# Generate random number 0 - 2.  0 represents left,
-			# 1 represent forward, and 2 represents right.
-			a = random.randint(0, 2)
-			if a == 1:
+			# Generate random number 0 - 4.  0 forward, 1-4 represent the rest
+			a = random.randint(0, 4)
+			if a == 0:
 				mario = False
-			a = random.randint(0, 2)
-			if a == 1:
+			a = random.randint(0, 4)
+			if a == 0:
 				wario = False
-			a = random.randint(0, 2)
-			if a == 1:
+			a = random.randint(0, 4)
+			if a == 0:
 				peach = False
 
 			# Decrement lives each round
