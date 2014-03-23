@@ -14,10 +14,12 @@ class Content(object):
         self.date = date
 
     def show(self):
-        print '{0}:\n{1}\n{2}\n{3}'.format(self.title, self.subtitle, self.creator, str(self.date))
+        print '{0}:\n{1}\n{2}\n{3}'.format(self.title, self.subtitle, self.creator, self.date)
 
     def matches_url(self, url):
-        if re.match("http://thecrimson.com/%s/%d/%d/%d/%s" % (self, self.date.year, self.date.month, self.date.day, self.subtitle), url) == None:
+
+        modified = self.subtitle.replace(" ", "_")
+        if re.match("http://thecrimson.com/%s/%d/%d/%d/%s" % (self, self.date.year, self.date.month, self.date.day, modified), url) == None:
             return False
         else:
             return True
@@ -29,9 +31,9 @@ class Article(Content):
         self.related_image = related_image
 
     def show(self):
-        print '{0}:\n{1}\n{2}\n{3}'.format(self.title, self.subtitle, self.creator, str(self.date))
+        print '{0}:\n{1}\n{2}\n{3}'.format(self.title, self.subtitle, self.creator, self.date)
 
-        if related_image:
+        if self.related_image:
             self.related_image.show()
 
     def matches_url(self, url):
